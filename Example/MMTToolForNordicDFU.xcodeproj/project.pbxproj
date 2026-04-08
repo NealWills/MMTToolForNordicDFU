@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10428D481AB5A0C735E355D2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		10428D481AB5A0C735E355D2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		1A0687049E4105A49AF48C08 /* Pods-MMTToolForNordicDFU_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMTToolForNordicDFU_Example.debug.xcconfig"; path = "Target Support Files/Pods-MMTToolForNordicDFU_Example/Pods-MMTToolForNordicDFU_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1E645D10411BB01B513D3762 /* Pods_MMTToolForNordicDFU_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MMTToolForNordicDFU_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* MMTToolForNordicDFU_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMTToolForNordicDFU_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,11 +41,11 @@
 		607FACE51AFB9204008FA782 /* MMTToolForNordicDFU_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MMTToolForNordicDFU_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		6E63D1E0BDB6086C93454D25 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		6E63D1E0BDB6086C93454D25 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		806E36A146A43ECA73BC7170 /* Pods_MMTToolForNordicDFU_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MMTToolForNordicDFU_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7D3CD3ED7630E5480A550B /* Pods-MMTToolForNordicDFU_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMTToolForNordicDFU_Tests.release.xcconfig"; path = "Target Support Files/Pods-MMTToolForNordicDFU_Tests/Pods-MMTToolForNordicDFU_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C1708C641898C98EB0EF788A /* Pods-MMTToolForNordicDFU_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMTToolForNordicDFU_Example.release.xcconfig"; path = "Target Support Files/Pods-MMTToolForNordicDFU_Example/Pods-MMTToolForNordicDFU_Example.release.xcconfig"; sourceTree = "<group>"; };
-		CE63FBCBCA1815FDAFC6CC6D /* MMTToolForNordicDFU.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = MMTToolForNordicDFU.podspec; path = ../MMTToolForNordicDFU.podspec; sourceTree = "<group>"; };
+		CE63FBCBCA1815FDAFC6CC6D /* MMTToolForNordicDFU.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MMTToolForNordicDFU.podspec; path = ../MMTToolForNordicDFU.podspec; sourceTree = "<group>"; };
 		E114206DBBD7B18D1BF64ED9 /* Pods-MMTToolForNordicDFU_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMTToolForNordicDFU_Tests.debug.xcconfig"; path = "Target Support Files/Pods-MMTToolForNordicDFU_Tests/Pods-MMTToolForNordicDFU_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,6 @@
 				E114206DBBD7B18D1BF64ED9 /* Pods-MMTToolForNordicDFU_Tests.debug.xcconfig */,
 				8E7D3CD3ED7630E5480A550B /* Pods-MMTToolForNordicDFU_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -190,7 +189,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				A1CD779DDB5C50CE4F497AB7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,10 +212,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 48J9S8BX9K;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 48J9S8BX9K;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -228,6 +228,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -293,39 +294,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MMTToolForNordicDFU_Example/Pods-MMTToolForNordicDFU_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MMTToolForNordicDFU/MMTToolForNordicDFU.framework",
+				"${BUILT_PRODUCTS_DIR}/ZIPFoundation/ZIPFoundation.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMTToolForNordicDFU.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZIPFoundation.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MMTToolForNordicDFU_Example/Pods-MMTToolForNordicDFU_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A1CD779DDB5C50CE4F497AB7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MMTToolForNordicDFU_Tests/Pods-MMTToolForNordicDFU_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MMTToolForNordicDFU_Tests/Pods-MMTToolForNordicDFU_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D48B9B216B16375012C5F397 /* [CP] Check Pods Manifest.lock */ = {
@@ -504,10 +482,12 @@
 			baseConfigurationReference = 1A0687049E4105A49AF48C08 /* Pods-MMTToolForNordicDFU_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 48J9S8BX9K;
 				INFOPLIST_FILE = MMTToolForNordicDFU/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meatmeet.nordicTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -519,10 +499,12 @@
 			baseConfigurationReference = C1708C641898C98EB0EF788A /* Pods-MMTToolForNordicDFU_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 48J9S8BX9K;
 				INFOPLIST_FILE = MMTToolForNordicDFU/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meatmeet.nordicTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -533,6 +515,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E114206DBBD7B18D1BF64ED9 /* Pods-MMTToolForNordicDFU_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 48J9S8BX9K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -542,8 +525,9 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meatmeet.nordicTool.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -555,13 +539,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8E7D3CD3ED7630E5480A550B /* Pods-MMTToolForNordicDFU_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 48J9S8BX9K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meatmeet.nordicTool.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
