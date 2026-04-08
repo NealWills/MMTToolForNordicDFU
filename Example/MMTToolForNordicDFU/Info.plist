@@ -35,5 +35,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>此应用需要使用蓝牙来扫描和连接附近的蓝牙设备，以便进行数据传输和设备控制。</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>此应用需要使用蓝牙来扫描和连接附近的蓝牙设备，以便进行数据传输和设备控制。</string>
 </dict>
 </plist>
