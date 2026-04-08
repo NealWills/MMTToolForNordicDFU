@@ -451,7 +451,7 @@ MMTToolForNordicDFU/
 
 ## Changelog
 
-### Version 1.0.0
+### Version 0.6.0
 - Implemented Bluetooth device scanning functionality
 - Implemented device connection and disconnection
 - Implemented MAC address extraction and deduplication
