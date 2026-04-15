@@ -10,7 +10,7 @@ import Foundation
 // MARK: - 日志级别
 
 /// 日志级别枚举
-public enum MMTLogLevel: Int, Comparable {
+public enum MMTToolForNordicLogLevel: Int, Comparable {
     case error = 0 // 错误
     case warning = 1 // 警告
     case info = 2 // 信息
@@ -51,7 +51,7 @@ public enum MMTLogLevel: Int, Comparable {
     }
 
     /// Comparable 协议实现
-    public static func < (lhs: MMTLogLevel, rhs: MMTLogLevel) -> Bool {
+    public static func < (lhs: MMTToolForNordicLogLevel, rhs: MMTToolForNordicLogLevel) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }
 }
@@ -59,9 +59,9 @@ public enum MMTLogLevel: Int, Comparable {
 // MARK: - 日志条目
 
 /// 日志条目结构
-public struct MMTLogEntry {
+public struct MMTNordicLogEntry {
     public let timestamp: Date
-    public let level: MMTLogLevel
+    public let level: MMTToolForNordicLogLevel
     public let message: String
     public let file: String
     public let line: Int
@@ -96,7 +96,7 @@ public struct MMTLogEntry {
 /// 日志配置类
 public class MMTLogConfiguration {
     /// 最低日志级别（低于此级别的日志将被过滤）
-    public var minimumLevel: MMTLogLevel = .debug
+    public var minimumLevel: MMTToolForNordicLogLevel = .debug
 
     /// 是否输出到控制台
     public var enableConsole: Bool = true
@@ -114,7 +114,7 @@ public class MMTLogConfiguration {
     public var enableColors: Bool = true
 
     /// 自定义日志处理器
-    public var customHandler: ((MMTLogEntry) -> Void)?
+    public var customHandler: ((MMTNordicLogEntry) -> Void)?
 
     /// 日志缓存（用于显示）
     public var cacheEnabled: Bool = true
@@ -128,64 +128,64 @@ public class MMTLogConfiguration {
 /// 日志管理器
 public class MMTToolForNordicLog: NSObject {
     // MARK: - 单例
-    
+
     public static let shared = MMTToolForNordicLog()
-    
+
     // MARK: - 属性
-    
+
     /// 配置
     public var configuration: MMTLogConfiguration = .init()
-    
+
     /// 日志缓存
-    private var logCache: [MMTLogEntry] = []
+    private var logCache: [MMTNordicLogEntry] = []
     private let cacheLock = NSLock()
-    
+
     /// 文件管理器
     private let fileManager = FileManager.default
-    
+
     /// 日期格式化器
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
         return formatter
     }()
-    
+
     // MARK: - 初始化
-    
+
     override private init() {
         super.init()
         setupDefaultConfiguration()
     }
-    
+
     private func setupDefaultConfiguration() {
         configuration.enableConsole = true
         configuration.cacheEnabled = true
         configuration.minimumLevel = .debug
     }
-    
+
     // MARK: - 配置方法
-    
+
     /// 配置日志系统
     public class func configure(_ block: (MMTLogConfiguration) -> Void) {
         block(shared.configuration)
     }
-    
+
     /// 设置自定义日志处理器
-    public class func setCustomHandler(_ handler: @escaping (MMTLogEntry) -> Void) {
+    public class func setCustomHandler(_ handler: @escaping (MMTNordicLogEntry) -> Void) {
         shared.configuration.customHandler = handler
     }
-    
+
     /// 设置最低日志级别
-    public class func setMinimumLevel(_ level: MMTLogLevel) {
+    public class func setMinimumLevel(_ level: MMTToolForNordicLogLevel) {
         shared.configuration.minimumLevel = level
     }
-    
+
     // MARK: - 日志记录
-    
+
     /// 记录日志
     public class func log(
         _ message: Any?,
-        level: MMTLogLevel = .debug,
+        level: MMTToolForNordicLogLevel = .debug,
         file: String = #file,
         line: Int = #line,
         function: String = #function
@@ -198,19 +198,19 @@ public class MMTToolForNordicLog: NSObject {
             function: function
         )
     }
-    
+
     private func writeLog(
         message: Any?,
-        level: MMTLogLevel,
+        level: MMTToolForNordicLogLevel,
         file: String,
         line: Int,
         function: String
     ) {
         // 过滤日志级别
         guard level <= configuration.minimumLevel else { return }
-        
+
         // 创建日志条目
-        let entry = MMTLogEntry(
+        let entry = MMTNordicLogEntry(
             timestamp: Date(),
             level: level,
             message: "\(message ?? "")",
@@ -219,73 +219,73 @@ public class MMTToolForNordicLog: NSObject {
             function: function,
             thread: Thread.current.isMainThread ? "Main" : "Background"
         )
-        
+
         // 缓存日志
         if configuration.cacheEnabled {
             cacheLog(entry)
         }
-        
+
         // 控制台输出
         if configuration.enableConsole {
             printToConsole(entry)
         }
-        
+
         // 文件输出
         if configuration.enableFile {
             printToFile(entry)
         }
-        
+
         // 自定义处理器
         configuration.customHandler?(entry)
     }
-    
+
     // MARK: - 缓存管理
-    
-    private func cacheLog(_ entry: MMTLogEntry) {
+
+    private func cacheLog(_ entry: MMTNordicLogEntry) {
         cacheLock.lock()
         defer { cacheLock.unlock() }
-        
+
         logCache.append(entry)
-        
+
         // 限制缓存大小
         if logCache.count > configuration.cacheLimit {
             logCache.removeFirst(logCache.count - configuration.cacheLimit)
         }
     }
-    
+
     /// 获取所有缓存的日志
-    public class func getCachedLogs() -> [MMTLogEntry] {
+    public class func getCachedLogs() -> [MMTNordicLogEntry] {
         return shared.logCache
     }
-    
+
     /// 获取缓存的日志字符串
     public class func getCachedLogStrings() -> [String] {
         return shared.logCache.map { $0.formattedMessage }
     }
-    
+
     /// 清空缓存
     public class func clearCache() {
         shared.cacheLock.lock()
         defer { shared.cacheLock.unlock() }
         shared.logCache.removeAll()
     }
-    
+
     // MARK: - 输出方法
-    
-    private func printToConsole(_ entry: MMTLogEntry) {
+
+    private func printToConsole(_ entry: MMTNordicLogEntry) {
         let prefix = configuration.enableColors ? entry.level.colorCode : ""
         let reset = configuration.enableColors ? "\u{001B}[0;0m" : ""
-        
+
         print("\(prefix)\(entry.formattedMessage)\(reset)")
     }
-    
-    private func printToFile(_ entry: MMTLogEntry) {
+
+    private func printToFile(_ entry: MMTNordicLogEntry) {
         guard let path = configuration.logFilePath else { return }
-        
+
         let logString = entry.formattedMessage + "\n"
-        
+
         guard let data = logString.data(using: .utf8) else { return }
-        
+
         if fileManager.fileExists(atPath: path) {
             // 检查文件大小
             if let attributes = try? fileManager.attributesOfItem(atPath: path),
@@ -295,7 +295,7 @@ public class MMTToolForNordicLog: NSObject {
                 // 文件过大，删除旧日志
                 try? fileManager.removeItem(atPath: path)
             }
-            
+
             // 追加到文件
             if let fileHandle = FileHandle(forWritingAtPath: path) {
                 fileHandle.seekToEndOfFile()
@@ -307,13 +307,13 @@ public class MMTToolForNordicLog: NSObject {
             fileManager.createFile(atPath: path, contents: data, attributes: nil)
         }
     }
-    
+
     // MARK: - 便捷方法
-    
+
     /// 导出日志到文件
     public class func exportLogs(to path: String) -> Bool {
         let logs = shared.logCache.map { $0.formattedMessage }.joined(separator: "\n")
-        
+
         do {
             try logs.write(toFile: path, atomically: true, encoding: .utf8)
             return true
@@ -322,32 +322,29 @@ public class MMTToolForNordicLog: NSObject {
             return false
         }
     }
-    
-    
 }
 
-extension MMTToolForNordicLog {
-
+public extension MMTToolForNordicLog {
     // MARK: - 便捷日志函数
 
     /// 全局日志函数
-    public static func MMTLogError(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
+    static func MMTLogError(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
         MMTToolForNordicLog.log(message, level: .error, file: file, line: line, function: function)
     }
 
-    public static func MMTLogWarning(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
+    static func MMTLogWarning(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
         MMTToolForNordicLog.log(message, level: .warning, file: file, line: line, function: function)
     }
 
-    public static func MMTLogInfo(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
+    static func MMTLogInfo(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
         MMTToolForNordicLog.log(message, level: .info, file: file, line: line, function: function)
     }
 
-    public static func MMTLogDebug(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
+    static func MMTLogDebug(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
         MMTToolForNordicLog.log(message, level: .debug, file: file, line: line, function: function)
     }
 
-    public static func MMTLogVerbose(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
+    static func MMTLogVerbose(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
         MMTToolForNordicLog.log(message, level: .verbose, file: file, line: line, function: function)
     }
 }
@@ -362,13 +359,13 @@ public enum MMTNordicLog {
     case verbose
 
     public func log(_ message: Any?, file: String = #file, line: Int = #line, function: String = #function) {
-        let level: MMTLogLevel
+        let level: MMTToolForNordicLogLevel
         switch self {
-            case .error: level = .error
-            case .warning: level = .warning
-            case .info: level = .info
-            case .debug: level = .debug
-            case .verbose: level = .verbose
+        case .error: level = .error
+        case .warning: level = .warning
+        case .info: level = .info
+        case .debug: level = .debug
+        case .verbose: level = .verbose
         }
         MMTToolForNordicLog.log(message, level: level, file: file, line: line, function: function)
     }
@@ -379,7 +376,7 @@ public enum MMTNordicLog {
 public extension MMTToolForNordicLog {
     /// 兼容旧的配置方法
     @available(*, deprecated, message: "Use configure(_:) instead")
-    class func config(logAction: @escaping (Any?, MMTLogLevel, StaticString, Int, StaticString) -> Void) {
+    class func config(logAction: @escaping (Any?, MMTToolForNordicLogLevel, StaticString, Int, StaticString) -> Void) {
         setCustomHandler { entry in
             // 将 String 转换为 StaticString（简化处理，直接传递字符串）
             // 注意：StaticString 是编译时常量，这里做简化处理
