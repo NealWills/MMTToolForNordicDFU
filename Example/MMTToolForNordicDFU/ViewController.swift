@@ -488,7 +488,7 @@ class ViewController: UIViewController {
     /// 添加日志（便捷方法）
     private func addLog(_ message: String) {
         // 使用新的日志系统
-        MMTLogInfo(message)
+        MMTToolForNordicLog.MMTLogInfo(message)
     }
 
     /// 更新连接按钮状态和样式
