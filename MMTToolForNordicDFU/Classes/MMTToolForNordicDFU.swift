@@ -1,5 +1,5 @@
 //
-//  MMTToolForNordicDFUTool.swift
+//  MMTToolForNordicDFU.swift
 //  MMTToolForNordicTool
 //
 //  Created by Maxeye_Neal on 03/04/2026.
@@ -91,30 +91,30 @@ public class MMTToolForNordicDFU: NSObject {
             MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "DFU Unit Exist"))
             return
         }
-        guard let turple = MMTToolForNordicDFU.sendDelegateUnitDFUGetUUID(unit) else {
-            MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "Delegate Not Exist"))
-            return
-        }
-        guard let service = turple.service else {
-            MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "Service Not Exist"))
-            return
-        }
-        guard let readCharacter = turple.readCharacter else {
-            MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "ReadCharacter Not Exist"))
-            return
-        }
-        guard let writeCharacter = turple.writeCharacter else {
-            MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "WriteCharacter Not Exist"))
-            return
-        }
-        guard let controlCharacter = turple.controlCharacter else {
-            MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "ControlCharacter Not Exist"))
-            return
-        }
-        unit.localServiceUUID = service.uuid.uuidString.uppercased()
-        unit.localReadCharacterUUID = readCharacter.uuid.uuidString.uppercased()
-        unit.localWriteCharacterUUID = writeCharacter.uuid.uuidString.uppercased()
-        unit.localControlCharacterUUID = controlCharacter.uuid.uuidString.uppercased()
+        // guard let turple = MMTToolForNordicDFU.sendDelegateUnitDFUGetUUID(unit) else {
+        //     MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "Delegate Not Exist"))
+        //     return
+        // }
+        // guard let service = turple.service else {
+        //     MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "Service Not Exist"))
+        //     return
+        // }
+        // guard let readCharacter = turple.readCharacter else {
+        //     MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "ReadCharacter Not Exist"))
+        //     return
+        // }
+        // guard let writeCharacter = turple.writeCharacter else {
+        //     MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "WriteCharacter Not Exist"))
+        //     return
+        // }
+        // guard let controlCharacter = turple.controlCharacter else {
+        //     MMTToolForNordicDFU.sendDelegateUnitDidFailToEnter(unit, error: MMTToolForNordicDFU.createError(code: -1, localDescrip: "ControlCharacter Not Exist"))
+        //     return
+        // }
+        // unit.localServiceUUID = service.uuid.uuidString.uppercased()
+        // unit.localReadCharacterUUID = readCharacter.uuid.uuidString.uppercased()
+        // unit.localWriteCharacterUUID = writeCharacter.uuid.uuidString.uppercased()
+        // unit.localControlCharacterUUID = controlCharacter.uuid.uuidString.uppercased()
         unit.startTimeStamp = Date().timeIntervalSince1970
         MMTToolForNordicDFU.share.unitList.append(unit)
         MMTToolForNordicDFU.sendDelegateUnitDidEnter(unit)
