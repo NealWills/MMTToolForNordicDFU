@@ -94,7 +94,7 @@ public struct MMTNordicLogEntry {
 // MARK: - 日志配置
 
 /// 日志配置类
-public class MMTLogConfiguration {
+public class MMTNordicLogConfiguration {
     /// 最低日志级别（低于此级别的日志将被过滤）
     public var minimumLevel: MMTToolForNordicLogLevel = .debug
 
@@ -134,7 +134,7 @@ public class MMTToolForNordicLog: NSObject {
     // MARK: - 属性
 
     /// 配置
-    public var configuration: MMTLogConfiguration = .init()
+    public var configuration: MMTNordicLogConfiguration = .init()
 
     /// 日志缓存
     private var logCache: [MMTNordicLogEntry] = []
@@ -166,7 +166,7 @@ public class MMTToolForNordicLog: NSObject {
     // MARK: - 配置方法
 
     /// 配置日志系统
-    public class func configure(_ block: (MMTLogConfiguration) -> Void) {
+    public class func configure(_ block: (MMTNordicLogConfiguration) -> Void) {
         block(shared.configuration)
     }
 
